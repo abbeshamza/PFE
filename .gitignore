@@ -1,0 +1,9 @@
+test/app/cache/*
+test/app/cache1/*
+test/app/logs/*
+test/.idea/workspace.xml
+test/vendor/*
+test/web/bundles/*
+TesTApp/.idea/*
+TesTApp/node_modules/*
+

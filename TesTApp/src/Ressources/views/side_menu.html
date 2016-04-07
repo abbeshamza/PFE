@@ -1,0 +1,52 @@
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('lg')"
+
+    >
+
+        <md-toolbar>
+            <h1>Projects</h1>
+        </md-toolbar>
+
+
+        <div layout-padding>
+
+            <md-autocomplete md-search-text="MainController.searchProject"
+                             md-items="item in projects | filter:MainController.searchProject"
+                             md-item-text="item.nameProject"
+                             md-min-length="3"
+                             placeholder="filter">
+                <md-item-template>
+                    <span md-highlight-text="MainController.searchText"
+                          md-highlight-flags="^i">{{item.nameProject}}</span>
+                </md-item-template>
+
+
+            </md-autocomplete>
+
+
+        </div>
+        <md-content>
+
+
+            <md-list>
+                <md-list-item
+                        ng-repeat="projet in projects | filter:MainController.searchProject| orderBy :'nameProject'"
+                        aria-label="">
+                    <md-button ng-click="selectProject(projet)"
+                               ng-class="{'selected' : projet == MainController.selected}">
+
+                        {{projet.nameProject}}
+                    </md-button>
+
+                </md-list-item>
+            </md-list>
+
+        </md-content>
+
+
+    </md-sidenav>
+
+
+

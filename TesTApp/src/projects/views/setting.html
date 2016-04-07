@@ -1,0 +1,46 @@
+
+
+<div flex layout="row" ng-controller="MainController">
+
+
+    <div ng-include ="'src/Ressources/views/side_menu.html'" ></div>
+    <md-divider></md-divider>
+    <div class="layout-column" flex = "100">
+        <div ng-include ="'src/Ressources/views/nav_bar.html'" ></div>
+
+
+
+        <md-content ng-controller = "ProjectController" flex>
+
+
+
+            <md-card  flex ng-if="project != null">
+                <md-card-content>
+                    <h3>the name of the project is</h3> {{project.nameProject}}
+                    <h3>the status of the project is </h3>{{project.status}}
+                </md-card-content>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-raised md-primary md-cornered">Update</md-button>
+                    <md-button class="md-raised md-primary md-cornered">Change name</md-button>
+                    <md-button class="md-raised md-primary md-cornered">Close/Open</md-button>
+                    <md-button class="md-raised md-warn md-cornered">Remove</md-button>
+                </md-card-actions>
+            </md-card>
+
+
+            <md-card ng-if="project == null">
+                <md-card-content>
+                    <h1> No Project is selected !</h1>
+
+                </md-card-content>
+            </md-card>
+
+
+
+        </md-content>
+    </div>
+</div>
+
+
+

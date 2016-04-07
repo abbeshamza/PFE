@@ -1,0 +1,7 @@
+parameters:
+    project.project_manager.class: ProjectBundle\Manager\ProjectManager
+
+services:
+    test_project.projet_manager:
+        class : "%project.project_manager.class%"
+        arguments:    ['@doctrine.orm.entity_manager', '@service_container']

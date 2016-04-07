@@ -1,0 +1,18 @@
+{
+  "name": "TesTApp",
+  "homepage": "https://github.com/abbeshamza/TesT",
+  "authors": [
+    "abbeshamza <abb.hamza.2013@gmail.com>"
+  ],
+  "description": "",
+  "main": "app.js",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,31 @@
+
+
+<div flex="100" layout="row" ng-controller="MainController">
+
+
+<div flex="30" ng-include ="'src/Ressources/views/side_menu.html'" ></div>
+<md-divider></md-divider>
+<div class="layout-column" flex = "100">
+ <div ng-include ="'src/Ressources/views/nav_bar.html'" ></div>
+
+    <md-content flex>
+
+        <md-tabs md-dynamic-height="MainController.tabIndex" md-stretch-tabs="always" selected="">
+
+            <md-tab label="BUILDS">
+                <div ng-include ="'src/home/views/builds.html'" ></div>
+            </md-tab>
+            <md-tab label="Test Companies">
+                <div ng-include ="'src/home/views/companies_test.html'" ></div>
+            </md-tab>
+            <md-tab label="Test Cases">
+                <div ng-include ="'src/home/views/tests.html'" ></div>
+            </md-tab>
+
+        </md-tabs>
+
+
+
+    </md-content>
+</div>
+</div>

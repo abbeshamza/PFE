@@ -1,0 +1,26 @@
+{
+  "name": "TesTApp",
+  "version": "0.0.1",
+  "description": "Web APP for Test Automation",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "~1.5.3",
+    "angular-animate": "~1.5.3",
+    "angular-aria": "~1.5.3",
+    "angular-material": "~1.0.6",
+    "angular-messages": "~1.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abbeshamza/TesT.git"
+  },
+  "author": "Hamza Abbes",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/abbeshamza/TesT/issues"
+  }
+}

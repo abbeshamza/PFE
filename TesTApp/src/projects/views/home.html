@@ -1,0 +1,42 @@
+<div flex="100" layout="row"   ng-controller="ListProjectsController">
+    <div  flex="30" ng-include ="'src/Ressources/views/side_menu_operation.html'" ></div>
+    <md-divider></md-divider>
+    <div class="layout-column" flex = "100">
+        <div ng-include ="'src/Ressources/views/nav_bar.html'" ></div>
+        <md-content flex>
+            <div >
+                <md-button class="md-fab md-fab-right" ng-click="addProject()">
+                    <md-icon md-svg-icon="add"></md-icon>
+                    <md-tooltip md-direction="right">Add a new project</md-tooltip>
+                </md-button>
+
+            </div>
+            <md-divider></md-divider>
+            <div>
+                <md-list flex ng-if=" listProjects != null">
+                    <md-list-item
+                            ng-repeat="project in listProjects | orderBy :'nameProject'"
+                            aria-label="">
+                        <md-card flex>
+                            <md-card-content>
+                                <h3>the name of the project is</h3> {{project.nameProject}}
+                                <h3>the status of the project is </h3>{{project.status}}
+                            </md-card-content>
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button class="md-raised md-primary md-cornered">Update</md-button>
+                                <md-button class="md-raised md-primary md-cornered">Change name</md-button>
+                                <md-button class="md-raised md-primary md-cornered">Close/Open</md-button>
+                                <md-button class="md-raised md-warn md-cornered">Remove</md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+                <md-card ng-if="listProjects == null">
+                    <md-card-content>
+                        <h1> There is no project !</h1>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+    </div>
+</div>
