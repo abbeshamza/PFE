@@ -1,4 +1,8 @@
 projet_rest:
-    resource: ProjectBundle\Controller\ProjetController
+    resource: ProjectBundle\Controller\ProjectController
+    type:     rest
+    name_prefix:  rest
+build_rest:
+    resource: ProjectBundle\Controller\BuildController
     type:     rest
     name_prefix:  rest

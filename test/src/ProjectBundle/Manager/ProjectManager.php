@@ -11,8 +11,8 @@ use AppBundle\Manager\BaseManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
-use ProjectBundle\Entity\Projet;
-use ProjectBundle\Form\ProjetType;
+use ProjectBundle\Entity\Project;
+use ProjectBundle\Form\ProjectType;
 use AppBundle\Core\CmdShell;
 
 
@@ -29,21 +29,21 @@ class ProjectManager extends BaseManager
 
     public function getRepository()
     {
-        return $this->em->getRepository('ProjectBundle:Projet');
+        return $this->em->getRepository('ProjectBundle:Project');
     }
 
     public function createProjectFromRequest(Request $req)
     {
-        $entity = new Projet();
-        $entity->setNameProject($req->get('name'));
-        $entity->setStatus($req->get('status'));
-        $entity->setFolderName();
+        $entity = new Project();
+        $entity->setName($req->get('name'));
+        $entity->setStatus("open");
+        $entity->setIsDeleted("no");
         return $entity;
     }
-    public  function projectValidation(Projet $projet)
+    public  function projectValidation(Project $project)
     {
         $validator = $this->container->get('validator');
-        $errors = $validator->validate($projet);
+        $errors = $validator->validate($project);
         if (count($errors) > 0)
         {
             return false ;
@@ -52,7 +52,7 @@ class ProjectManager extends BaseManager
            return true ;
     }
 
-    public function loadProjetById($id){
+    public function loadProjectById($id){
         return $this->getRepository()->findOneBy(array('id' => $id));
     }
 
@@ -60,16 +60,20 @@ class ProjectManager extends BaseManager
         return $this->getRepository()->findOneBy(array('name' => $name));
     }
 
-    public function loadProjets(){
+    public function loadProjects(){
         return $this->getRepository()->findAll();
     }
 
-    public function addProjet(Projet $projet){
+    public function addProject(Project $project){
+
+
+        $this->persistAndFlush($project);
         $cmd= new CmdShell();
-        $cmd->createFolder("functional",$projet->getFolderName());
-        $cmd->createFolder("_output",$projet->getFolderName());
-        $cmd->createFunctionnalTest($projet->getFolderName(),"hh");
-        $this->persistAndFlush($projet);
+        $cmd->createFolder("functional",$project->getId());
+        $cmd->createFolder("_data",$project->getId());
+        $cmd->createFolder("_output",$project->getId());
+        $cmd->createFunctionnalTest($project->getId(),"hh");
+
     }
     public function deleteProject( $id)
 {

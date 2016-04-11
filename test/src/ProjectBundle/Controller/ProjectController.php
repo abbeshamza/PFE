@@ -7,7 +7,7 @@
  */
 
 namespace ProjectBundle\Controller;
-use ProjectBundle\Entity\Projet;
+use ProjectBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +30,7 @@ use AppBundle\Core\ApiResponse;
 /**
  * @RouteResource("project")
  */
-class ProjetController extends Controller
+class ProjectController extends Controller
 {
 
 
@@ -57,10 +57,10 @@ class ProjetController extends Controller
      */
     public function cgetAction()
     {
-        $projectManager = $this->get('test_project.projet_manager');
-        $projet = $projectManager->loadProjets();
-        if ($projet != null )
-            return new ApiResponse( $projet,200);
+        $projectManager = $this->get('test_project.project_manager');
+        $project = $projectManager->loadProjects();
+        if ($project != null )
+            return new ApiResponse( $project,200);
         else
             return new ApiResponse( null,400);
 
@@ -93,10 +93,10 @@ class ProjetController extends Controller
      */
     public function getAction($id, Request $request)
     {
-        $projectManager = $this->get('test_project.projet_manager');
-        $projet = $projectManager->loadProjetById($id);
-        if ($projet != null )
-            return new ApiResponse( $projet,200);
+        $projectManager = $this->get('test_project.project_manager');
+        $project = $projectManager->loadProjectById($id);
+        if ($project != null )
+            return new ApiResponse( $project,200);
         else
             return new ApiResponse( null,400);
 
@@ -118,7 +118,7 @@ class ProjetController extends Controller
      *     description="Post Project",
      *      parameters={
      *      {"name"="name", "dataType"="string", "required"=true, "description"="Name of project"},
-     *      {"name"="status", "dataType"="string", "required"=true, "description"="Status of project : open / closed"},
+     *
      *       },
      *
      *     statusCodes={
@@ -141,11 +141,11 @@ class ProjetController extends Controller
 
     public function postAction(Request $req)
     {
-        $projectManager = $this->get('test_project.projet_manager');
+        $projectManager = $this->get('test_project.project_manager');
         $project = $projectManager->createProjectFromRequest($req);
         if ( $projectManager->projectValidation($project) )
         {
-            $projectManager->addProjet($project);
+            $projectManager->addProject($project);
             return new ApiResponse( $project,201);
         }
 
@@ -183,7 +183,7 @@ class ProjetController extends Controller
 
     public function deleteAction(Request $req)
     {
-        $projectManager = $this->get('test_project.projet_manager');
+        $projectManager = $this->get('test_project.project_manager');
         $project = $projectManager->createProjectFromRequest($req);
         if ( $projectManager->projectValidation($project) )
         {
