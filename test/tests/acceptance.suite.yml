@@ -1,12 +1,36 @@
 # Codeception Test Suite Configuration
-#
-# Suite for acceptance tests.
-# Perform tests in browser using the WebDriver or PhpBrowser.
+
+# suite for acceptance tests.
+# perform tests in browser using the WebDriver or PhpBrowser.
 # If you need both WebDriver and PHPBrowser tests - create a separate suite.
 
 class_name: AcceptanceTester
 modules:
     enabled:
-        - PhpBrowser:
-            url: http://localhost/myapp
-        - \Helper\Acceptance
+        - WebDriver
+        - Filesystem
+        - FunctionalHelper
+        - MailCatcher
+
+
+
+    config:
+        WebDriver:
+            url: 'http://127.0.0.1/~hab/cooperons/front'
+            browser: 'firefox'
+            wait: 2
+            window_size: 1024x768
+            restart: true
+            port: 4444
+            capabilities:
+                unexpectedAlertBehaviour: 'accept'
+        MailCatcher :
+            url: 'http://127.0.0.1'
+            port: '1080'
+        guzzleRequestOptions:
+            verify: false
+            debug: true
+            version: 1.0
+
+
+
