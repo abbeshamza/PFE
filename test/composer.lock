@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f1619d85971bbb55529165ad8a39ac0a",
-    "content-hash": "be25422785092a4cfcef68b39c3bcd18",
+    "hash": "8786cb1be120e8d8ee371f055147a113",
+    "content-hash": "f68dc28d5db04ea3ba1e9dbadf9f0d3b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3342,16 +3342,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.5",
+            "version": "v5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "3a160355bb1364da55ed9e415c1aa1fa8d457b6f"
+                "reference": "ffe306d09c1f2bad721237f63b2169d1b78253d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/3a160355bb1364da55ed9e415c1aa1fa8d457b6f",
-                "reference": "3a160355bb1364da55ed9e415c1aa1fa8d457b6f",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ffe306d09c1f2bad721237f63b2169d1b78253d0",
+                "reference": "ffe306d09c1f2bad721237f63b2169d1b78253d0",
                 "shasum": ""
             },
             "require": {
@@ -3390,7 +3390,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-03-15 16:21:41"
+            "time": "2016-04-25 20:50:31"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4809,6 +4809,76 @@
                 "unit testing"
             ],
             "time": "2015-07-14 11:24:17"
+        },
+        {
+            "name": "ericmartel/codeception-email",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ericmartel/codeception-email.git",
+                "reference": "c84ebc03c14215078802c382d9b1510d1d880fac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ericmartel/codeception-email/zipball/c84ebc03c14215078802c382d9b1510d1d880fac",
+                "reference": "c84ebc03c14215078802c382d9b1510d1d880fac",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codeception\\Email\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Martel",
+                    "email": "emartel@gmail.com"
+                }
+            ],
+            "description": "Provides test helpers for Codeception when testing email functionality",
+            "time": "2016-01-27 12:37:58"
+        },
+        {
+            "name": "ericmartel/codeception-email-mailcatcher",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ericmartel/codeception-email-mailcatcher.git",
+                "reference": "520c7ffaecf13847fb2853142ef381a9801b15cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ericmartel/codeception-email-mailcatcher/zipball/520c7ffaecf13847fb2853142ef381a9801b15cc",
+                "reference": "520c7ffaecf13847fb2853142ef381a9801b15cc",
+                "shasum": ""
+            },
+            "require": {
+                "ericmartel/codeception-email": "^1.0",
+                "guzzlehttp/guzzle": "^6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codeception\\Module\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Martel",
+                    "email": "emartel@gmail.com"
+                }
+            ],
+            "description": "Provides test helpers for Codeception when testing email functionality with MailCatcher",
+            "time": "2016-01-27 12:38:16"
         },
         {
             "name": "facebook/webdriver",

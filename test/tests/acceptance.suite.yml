@@ -11,6 +11,7 @@ modules:
         - Filesystem
         - FunctionalHelper
         - MailCatcher
+        - AcceptanceHelper
 
 
 
@@ -31,6 +32,9 @@ modules:
             verify: false
             debug: true
             version: 1.0
+        AcceptanceHelper:
+            url: 'http://127.0.0.1'
+            port: '1080'
 
 
 

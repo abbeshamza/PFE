@@ -1,5 +1,5 @@
 <?php
-// src/Acme/ApiBundle/Entity/User.php
+// src/Acme/ApiBundle/Entity/UserController.php
 
 namespace UserBundle\Entity;
 

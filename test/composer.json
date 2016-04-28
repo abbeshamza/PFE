@@ -45,7 +45,9 @@
         "sensio/generator-bundle": "~3.0",
         "symfony/phpunit-bridge": "~2.7",
         "codeception/codeception": " 2.1.*",
-        "captbaritone/mailcatcher-codeception-module": "1.*"
+        "captbaritone/mailcatcher-codeception-module": "1.*",
+        "ericmartel/codeception-email-mailcatcher": "^1.0"
+
 
 
     },
