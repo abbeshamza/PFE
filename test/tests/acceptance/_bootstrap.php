@@ -34,6 +34,12 @@ Fixtures::add('newParticipant2PhoneNumber',"0123456789");
 
 
 Fixtures::add('affaire1Name','MyLittleFantaisie');
+Fixtures::add("cancelCaseReason","Le prospect n'est finalement pas intéressé");
+Fixtures::add('affaire2Name','MyLittleFantaisie New');
+Fixtures::add('affaire2NegotiationMoney','5000');
+Fixtures::add('affaire2ClosingMoney','4500');
+Fixtures::add('affaire2Reg1Money','3000');
+Fixtures::add('affaire2Reg2Money','1500');
 
 
 

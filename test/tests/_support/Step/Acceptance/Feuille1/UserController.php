@@ -19,18 +19,39 @@ class UserController extends \AcceptanceTester
     public function __construct(\AcceptanceTester $I) {
         $this->user = $I;
     }
+
+    /**
+     * Login
+     *
+     * @param $username
+     * @param $password
+     */
     public function login($username, $password) {
+        $this->user->wait(2);
         $this->user->amOnPage(LoginPage::$URL);
         $this->user->fillField(LoginPage::$usernameField, $username);
         $this->user->fillField(LoginPage::$passwordeField, $password);
         $this->user->click(LoginPage::$loginButton);
         $this->user->wait(2);
     }
+
+    /**
+     * Logout
+     *
+     */
     public function logout()
     {
         $this->user->click("//a[@title='Déconnexion']");
     }
-    public function addMember($firstName,$lastName,$email)
+
+    /**
+     * Add A Member
+     * Add a new member to my entreprise
+     * @param $firstName
+     * @param $lastName
+     * @param $email
+     */
+    public function addMember($firstName, $lastName, $email)
     {
         $this->user->amOnPage(Corporates::$URL);
         $this->user->wait(4);
@@ -43,7 +64,12 @@ class UserController extends \AcceptanceTester
 
     }
 
-    public function addProgram($programName,$fileName)
+    /**
+     * Add a new Program for a given user
+     * @param $programName
+     * @param $fileName
+     */
+    public function addProgram($programName, $fileName)
     {
         $this->user->amOnPage(Program::$URL);
         $this->user->wait(3);
@@ -60,7 +86,13 @@ class UserController extends \AcceptanceTester
         $this->user->checkOption(Program::$secondCheckBox);
         $this->user->click(Program::$paymentMethodVirement);
     }
-    public function checkProgramStatus($status,$money)
+
+    /**
+     * Check for a given program's status and check for money for a given user
+     * @param $status
+     * @param $money
+     */
+    public function checkProgramStatus($status, $money)
     {
         $this->user->amOnPage(Program::$URL);
         $this->user->see($status,Program::$statusOfProgram);
@@ -68,7 +100,14 @@ class UserController extends \AcceptanceTester
         $this->user->see($money,Program::$moneyLabel);
 
     }
-    public function addNewParticipentToProgram($firstName,$lastName,$email)
+
+    /**
+     * Add a new participant for a given program
+     * @param $firstName
+     * @param $lastName
+     * @param $email
+     */
+    public function addNewParticipentToProgram($firstName, $lastName, $email)
     {
         $this->user->amOnPage(Program::$URL);
         $this->user->wait(2);
@@ -79,17 +118,32 @@ class UserController extends \AcceptanceTester
         $this->user->click(Program::$newParticipantButtom);
         $this->user->wait(2);
     }
+
+    /**
+     * Go to the URL generated from the server with the token
+     *
+     */
     public function goToUrlFromInvitationEmail()
     {
         $emailLastIndex=$this->user->findLastEmailBySubject($this->msgOfInvitationEmail);
         $email= $this->user->getEmailBody($emailLastIndex);
         $urlInvitation=$this->user->grabMatchesFromAnEmail($email,$this->regexOfInvitationUrl);
-        $toDelete= array('<a href=','target','"',' ');
+        $toDelete= array("<a href=","target",'"',' ');
         $urlInvitation= str_replace($toDelete,"",$urlInvitation);
         $this->user->amOnUrl($urlInvitation);
 
     }
-    public function completeRegistration($plainPassword,$repeatedPassword,$adresse,$city,$postalCode,$phone)
+
+    /**
+     * Complete registration from the URL of invitation sent by email
+     * @param $plainPassword
+     * @param $repeatedPassword
+     * @param $adresse
+     * @param $city
+     * @param $postalCode
+     * @param $phone
+     */
+    public function completeRegistration($plainPassword, $repeatedPassword, $adresse, $city, $postalCode, $phone)
     {
         $this->user->click(Registration::$registrationButton);
         $this->user->fillField(Registration::$plainPasswordeField,$plainPassword);
@@ -104,6 +158,11 @@ class UserController extends \AcceptanceTester
         $this->user->wait(2);
 
     }
+
+    /**
+     * Invite a new user : FirstName LastName <Email>
+     * @param $char
+     */
     public function parrainage($char)
     {
         $this->user->amOnPage(Program::$URL);
@@ -114,6 +173,11 @@ class UserController extends \AcceptanceTester
         $this->user->wait(2);
 
     }
+
+    /**
+     * Go to the URL generated from the server with the token
+     *
+     */
     public function goToUrlFromParrainageInvitationEmail()
     {
         $emailLastIndex=$this->user->findLastEmailBySubject($this->msgOfInvitationParrainage);
@@ -130,6 +194,11 @@ class UserController extends \AcceptanceTester
         $this->user->wait(2);
 
     }
+
+    /**
+     * Validate the invitation and add the new member  to my program
+     *
+     */
     public function addMemberToMyProgram()
     {
         $this->user->amOnPage(Program::$URL);
@@ -140,6 +209,11 @@ class UserController extends \AcceptanceTester
         $this->user->pressKey(Program::$searchForProgramField,\WebDriverKeys::ENTER);
         $this->user->click(Program::$activationButtomForFirstIndex);
     }
+
+    /**
+     * Go to invited user from my own profile
+     *
+     */
     public function goToMember2Profile()
     {
         $this->user->amOnPage(Program::$URL);
@@ -148,15 +222,62 @@ class UserController extends \AcceptanceTester
         $this->user->click(Program::$member2ProfilUrl);
 
     }
-    /*
-     *complete the creation off affaire
-     * fill field :intitulé
-     *  */
+    /**
+     *create "affaire"
+     *
+     *
+     */
 
     public function createAffaire($name)
     {
+
+        $this->user->fillField(Program::$affaireNameField,$name);
+        $this->user->wait(2);
         $this->user->click(Program::$createAffaireButtom);
         $this->user->wait(2);
+
+    }
+
+    /**
+     * cancel a specific case
+     * @param $msg
+     */
+    public function abandonCase($msg)
+    {
+        $this->user->wait(2);
+        $this->user->click(Program::$enApprocheButton);
+        $this->user->wait(2);
+        $this->user->fillField(Program::$abandonnerAffaireTextArea,$msg);
+        $this->user->click(Program::$abandonnerAffairebutton);
+        $this->user->wait(2);
+    }
+
+    /**
+     * negotiation need to add vérification of money and emails
+     * @param $value
+     */
+    public function negotiationCase($value)
+    {
+        $this->user->wait(2);
+        $this->user->click(Program::$urlAffaire2);
+        $this->user->wait(2);
+        $this->user->fillField(Program::$negotiationField,$value);
+        $this->user->click(Program::$negociationButton);
+        $this->user->wait(2);
+    }
+    public function closeCase($value)
+    {
+
+
+        $this->user->fillField(Program::$negotiationField,$value);
+        $this->user->click(Program::$closinngCaseButton);
+        $this->user->wait(2);
+    }
+    public function reglement($value)
+
+    {
+        $this->user->fillField(Program::$negotiationField,$value);
+        $this->user->click(Program::$negociationButton);
 
     }
 

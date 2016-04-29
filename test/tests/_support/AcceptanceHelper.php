@@ -31,15 +31,30 @@ class AcceptanceHelper extends \Codeception\Module
         }
     }
 
+    /**
+     * show a variable's value
+     * @param $var
+     */
     public function seeMyVar($var){
         $this->debug($var);
     }
+
+    /**
+     * get all my emails
+     * @return array|bool|float|int|string
+     */
     public function grabAllEmails()
     {
         $response = $this->mailcatcher->get('/messages')->send();
         $messages = $response->json();
         return $messages;
     }
+
+    /**
+     * get the last email by subject
+     * @param $subject
+     * @return null
+     */
     public function findLastEmailBySubject($subject)
     {
         $messages= $this->grabAllEmails();
@@ -54,6 +69,12 @@ class AcceptanceHelper extends \Codeception\Module
         return $nbr;
 
     }
+
+    /**
+     * get a given's body
+     * @param $id
+     * @return array|bool|float|int|string
+     */
     public function getEmailBody($id)
     {
         $response = $this->mailcatcher->get("/messages/{$id}.json")->send();
@@ -63,6 +84,12 @@ class AcceptanceHelper extends \Codeception\Module
 
     }
 
+    /**
+     * grab a matches from a given email's body
+     * @param $email
+     * @param $regex
+     * @return mixed
+     */
     public function grabMatchesFromAnEmail($email, $regex)
     {
         $body = ($email['source']);

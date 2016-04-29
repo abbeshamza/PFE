@@ -34,9 +34,14 @@ class Program
     public static $activationButtomForFirstIndex="//div[@id='global']/div/div/div/div/div[2]/md-content/div[2]/div/div[3]/md-card/md-content/md-table-container/table/tbody/tr/td/div/button";
     public static $member2ProfilUrl="//div[@id='global']/div/div/div[1]/div/div[2]/md-content/div[2]/div/div[3]/md-card/md-content/md-table-container/table/tbody/tr[2]/td[1]/div/a/ng-md-icon";
     public static $affaireNameField="//input[@id='form_label']";
-    public static $createAffaireButtom="//buttom[@id='createAffair']";
-
-
+    public static $createAffaireButtom="//button[@id='createAffair']";
+    public static $enApprocheButton="//div[@id='formAffairNew-placeholder']/div/md-content[2]/div/md-card/md-table-container/table/tbody/tr/td[2]/a/span";
+    public static $abandonnerAffaireTextArea="//textarea[@id='cancelMsg']";
+    public static $abandonnerAffairebutton = "//form[@id='formAbandon']/md-input-container[2]/button";
+    public static $urlAffaire2 ="//div[@id='formAffairNew-placeholder']/div/md-content[2]/div/md-card/md-table-container/table/tbody/tr[2]/td[1]/a/span";
+    public static $negotiationField="//input[@id='amount']";
+    public static $negociationButton="//div[@id='global']/div/div/div[1]/div/div[2]/md-content/div[2]/div/md-content[1]/div/md-card/form/md-input-container[2]/button";
+    public static $closinngCaseButton="//div[@id='global']/div/div/div[1]/div/div[2]/md-content/div[2]/div/md-content[1]/div/md-card/form/md-input-container[2]/button";
 
     /**
      * Basic route example for your current URL
